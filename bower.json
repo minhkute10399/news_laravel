@@ -1,0 +1,17 @@
+{
+  "name": "news_laravel",
+  "description": "",
+  "main": "",
+  "authors": [
+    "minhkute10399 <minhkute10399@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/minhkute10399/news_laravel",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
