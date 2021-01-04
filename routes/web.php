@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,10 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => ['localization']], function () {
+    Route::resource('dashboard', 'BackendController');
+    Route::resource('categories', 'CategoryController');
+    Route::resource('users', 'UserController');
 });
+Route::get('change-language/{language}', 'LangController@changeLanguage');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+

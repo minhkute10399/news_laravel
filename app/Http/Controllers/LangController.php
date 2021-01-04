@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Request_writer;
 use Illuminate\Http\Request;
 
