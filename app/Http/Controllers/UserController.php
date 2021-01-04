@@ -59,7 +59,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        return view('website.backend.user.update', ['user' => $user]);
     }
 
     /**
@@ -71,7 +73,22 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->banned_until = $request->banned_until;
+
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $fileName = time() . '.' . $extension;
+            $file->move('images', $fileName);
+            $user->image = $fileName;
+        }
+
+        $user->save();
+
+        return redirect()->route('users.index');
     }
 
     /**

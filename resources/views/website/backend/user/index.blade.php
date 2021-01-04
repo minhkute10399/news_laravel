@@ -82,6 +82,9 @@
                                                     <th class="sorting" tabindex="0" aria-controls="datatable-responsive"rowspan="1" colspan="1" style="width: 110px;"aria-label="Last name: activate to sort column ascending">
                                                         Updated at
                                                     </th>
+                                                    <th class="sorting" tabindex="0" aria-controls="datatable-responsive"rowspan="1" colspan="1" style="width: 110px;"aria-label="Last name: activate to sort column ascending">
+                                                        Banned Until
+                                                    </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -89,21 +92,26 @@
                                                     <tr role="row" class="odd">
                                                         <td>{{ $user->id }}</td>
                                                         <td>{{ $user->name }}</td>
-                                                        <td>{{ $user->image }}</td>
+                                                        <td><img src="{{ asset('images/'.$user->image)}}" alt="" height="73px" width="73px"></td>
                                                         <td>{{ $user->email }}</td>
                                                         <td>{{ $user->password }}</td>
                                                         <td>{{ $user->role_id }}</td>
                                                         <td>{{ $user->status }}</td>
                                                         <td>{{ $user->created_at }}</td>
                                                         <td>{{ $user->updated_at }}</td>
+                                                        <td>{{ $user->banned_until }}</td>
                                                         <td style="display: flex; align-items: center; ">
-                                                            <form action="{{ route('users.destroy', [$user->id]) }}" method="POST">
+                                                            <a href="{{ route('users.edit', [$user->id]) }}">
+                                                                <i class="fas fa-user-edit"></i>Edit
+                                                            </a>
+
+                                                            {{-- <form action="{{ route('users.destroy', [$user->id]) }}" method="POST">
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button type="submit"onclick="return confirm('Want to delete ?')" class="btn btn-app">
                                                                     <i class="fa fa-remove"></i>Block
                                                                 </button>
-                                                            </form>
+                                                            </form> --}}
                                                         </td>
                                                     </tr>
                                                 @endforeach
