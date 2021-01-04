@@ -22,4 +22,3 @@ Route::get('change-language/{language}', 'LangController@changeLanguage');
 
 Auth::routes();
 
-

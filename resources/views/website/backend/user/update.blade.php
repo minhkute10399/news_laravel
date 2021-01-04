@@ -4,7 +4,7 @@
 <div class="col-md-12 col-sm-12 ">
     <div class="x_panel">
         <div class="x_title">
-            <h2>Update Product Category </h2>
+            <h2>Update User</h2>
             <ul class="nav navbar-right panel_toolbox">
                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                 </li>
@@ -24,16 +24,40 @@
         </div>
         <div class="x_content">
             <br>
-            <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" method="POST" action="{{ route('productcategory.update', [$category->id]) }}">
+            <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate=""  enctype="multipart/form-data" method="POST" action="{{ route('users.update', [$user->id]) }}">
                 @csrf
-                {{ method_field('PUT') }}
+                @method('PUT')
                 <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Brand Name <span class="required">*</span>
+                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Name<span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 ">
-                        <input type="text" id="brand_name" required="required" class="form-control " name="brand_name" value="{{ $category->brand_name }}">
+                        <input type="text" id="name" required="required" class="form-control " name="name" value="{{ $user->name }}">
                     </div>
                 </div>
+
+                <div class="item form-group">
+                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Banned_at<span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 ">
+                        <input type="date" id="status" required="required" class="form-control " name="banned_until" value="{{ $user->banned_until }}">
+                    </div>
+                </div>
+
+                <div class="item form-group">
+                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Email<span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 ">
+                        <input type="email" id="email" required="required" class="form-control " name="email" value="{{ $user->email }}">
+                    </div>
+                </div>
+
+                  <div class="item form-group">
+                    <label class="col-form-label col-md-3 col-sm-3 label-align" style="margin: 0 10px 0 0">Image Upload
+                    </label>
+                    <div class="col-md-6 col-sm-6 ">
+                      <input type="file" class="custom-file-input" id="image" name="image" style="opacity:1" value="{{ $user->image }}">
+                      <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                    </div>
                 {{-- <div class="item form-group">
                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Last Name <span class="required">*</span>
                     </label>

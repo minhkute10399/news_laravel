@@ -25,9 +25,13 @@ class User extends Authenticatable
         'email',
         'password',
         'image',
-        'role_id',
+        'banned_until',
     ];
 
+
+    protected $date = [
+        'banned_until',
+    ];
     /**
      * The attributes that should be hidden for arrays.
      *

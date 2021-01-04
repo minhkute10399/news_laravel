@@ -12,6 +12,7 @@
     <link href="{{ asset('adminbackend/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="{{ asset('adminbackend/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('bower_components/components-font-awesome/css/all.css') }}">
     <!-- NProgress -->
     <link href="{{ asset('adminbackend/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
     <!-- iCheck -->
@@ -26,4 +27,7 @@
 
     <!-- Custom Theme Style -->
     <link href="{{ asset('adminbackend/build/css/custom.min.css') }}" rel="stylesheet">
+
+     <!-- Styles -->
+     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
   </head>
