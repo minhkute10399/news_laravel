@@ -28,7 +28,7 @@
             </li>
             <li>
                 <a>
-                    <i class="fa fa-home"></i>Contacts
+                    <i class="fa fa-home"></i>Post
                     <span class="fa fa-chevron-down"></span>
                 </a>
                 <ul class="nav child_menu">
