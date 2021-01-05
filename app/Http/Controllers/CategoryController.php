@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Auth;
+Use Alert;
 
 class CategoryController extends Controller
 {
@@ -14,7 +16,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $items = Category::all();
+        $items = Category::where('parent_id', 0)->get();
 
         return view('website.backend.category.index', ['items' => $items]);
     }
@@ -26,7 +28,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $category = Category::where('parent_id', 0)->get();
+
+        return view('website.backend.category.create', ['categories' => $category]);
     }
 
     /**
@@ -37,7 +41,15 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new Category;
+
+        $category->create([
+            'name' => $request->name,
+            'parent_id' => $request->parent_id,
+        ]);
+        Alert::success('Success ', 'Create Successfully!!');
+
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -48,7 +60,15 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        if ($category->parent_id == 0) {
+            $category->load('children');
+
+            return view('website.backend.category.show', ['category' => $category]);
+        }
+
+        abort(404);
     }
 
     /**
@@ -59,7 +79,21 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $categoryList = Category::all();
+        if ($category->parent_id == 0){
+            $category->load('children');
+
+            return view('website.backend.category.update', [
+                'category' => $category,
+                'categoryList' => $categoryList,
+            ]);
+        }
+
+        return view('website.backend.category.update', [
+            'category' => $category,
+            'categoryList' => $categoryList,
+        ]);
     }
 
     /**
@@ -71,7 +105,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        $category->update([
+            'name' => $request->name,
+            'parent_id' => $request->parent_id,
+        ]);
+
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -82,6 +123,17 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->load('children');
+
+        if ($category->children->count()){
+            foreach ($category->children as $child){
+                $child->delete();
+            }
+        }
+        $category->delete();
+        Alert::success('Success ', 'Delete Successfully!!');
+
+        return redirect()->back();
     }
 }

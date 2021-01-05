@@ -4,7 +4,7 @@
 <div class="col-md-12 col-sm-12 ">
     <div class="x_panel">
         <div class="x_title">
-            <h2>Update Product Category </h2>
+            <h2>Update Category </h2>
             <ul class="nav navbar-right panel_toolbox">
                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                 </li>
@@ -24,16 +24,23 @@
         </div>
         <div class="x_content">
             <br>
-            <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" method="POST" action="{{ route('productcategory.update', [$category->id]) }}">
+            <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" method="POST" action="{{ route('categories.update', [$category->id]) }}">
                 @csrf
-                {{ method_field('PUT') }}
+                @method('PUT')
                 <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Brand Name <span class="required">*</span>
+                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" >Name <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 ">
-                        <input type="text" id="brand_name" required="required" class="form-control " name="brand_name" value="{{ $category->brand_name }}">
+                        <input type="text" id="name" required="required" class="form-control " name="name" value="{{ $category->name }}">
                     </div>
+                    <select class="form-control" name="parent_id">
+                        <option value="0">---Category---</option>
+                        @foreach ($categoryList as $item)
+                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
+
                 {{-- <div class="item form-group">
                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Last Name <span class="required">*</span>
                     </label>
@@ -77,8 +84,6 @@
                 <div class="ln_solid"></div>
                 <div class="item form-group">
                     <div class="col-md-6 col-sm-6 offset-md-3">
-                        <button class="btn btn-primary" type="button">Cancel</button>
-                        <button class="btn btn-primary" type="reset">Reset</button>
                         <button type="submit" class="btn btn-success">Submit</button>
                     </div>
                 </div>

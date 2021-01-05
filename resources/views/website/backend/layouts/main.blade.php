@@ -4,6 +4,7 @@
   @include('website.backend.layouts.head');
 
   <body class="nav-md">
+    @include('sweetalert::alert')
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
