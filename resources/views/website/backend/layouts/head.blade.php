@@ -30,4 +30,11 @@
 
      <!-- Styles -->
      {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/imgs/favicon.svg') }}">
+    <!-- UltraNews CSS  -->
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/widgets.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/color.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
   </head>

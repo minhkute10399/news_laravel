@@ -8,6 +8,8 @@
 /public/frontend
 /public/images
 /public.js
+/public/newsviral
+/public/assets
 /vendor
 .env
 .env.backup

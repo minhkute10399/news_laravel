@@ -32,9 +32,7 @@
                     <span class="fa fa-chevron-down"></span>
                 </a>
                 <ul class="nav child_menu">
-                    {{-- <li><a href="{{ route('contact.index') }}">Contact</a></li>
-                    <li><a href="{{ route('contactForm.index') }}">Contact Form</a></li>
-                    --}}
+                    <li><a href="{{ route('posts.index') }}">Post</a></li>
                 </ul>
             </li>
         </ul>

@@ -111,6 +111,7 @@ class CategoryController extends Controller
             'name' => $request->name,
             'parent_id' => $request->parent_id,
         ]);
+        Alert::success('Success ', 'Edit Successfully!!');
 
         return redirect()->route('categories.index');
     }

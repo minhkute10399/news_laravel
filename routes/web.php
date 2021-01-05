@@ -17,6 +17,7 @@ Route::group(['middleware' => ['localization']], function () {
     Route::resource('dashboard', 'BackendController');
     Route::resource('categories', 'CategoryController');
     Route::resource('users', 'UserController');
+    Route::resource('posts', 'PostController');
 });
 Route::get('change-language/{language}', 'LangController@changeLanguage');
 
