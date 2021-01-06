@@ -18,6 +18,14 @@ Route::group(['middleware' => ['localization']], function () {
     Route::resource('categories', 'CategoryController');
     Route::resource('users', 'UserController');
     Route::resource('posts', 'PostController');
+    Route::resource('home', 'FrontendController');
+    Route::resource('authors', 'AuthorController');
+
+    Route::any('/ckfinder/connector', '\CKSource\CKFinderBridge\Controller\CKFinderController@requestAction')
+    ->name('ckfinder_connector');
+
+    Route::any('/ckfinder/browser', '\CKSource\CKFinderBridge\Controller\CKFinderController@browserAction')
+    ->name('ckfinder_browser');
 });
 Route::get('change-language/{language}', 'LangController@changeLanguage');
 

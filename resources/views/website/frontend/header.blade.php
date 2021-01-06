@@ -1,3 +1,5 @@
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
@@ -9,7 +11,7 @@
     <title>Gentelella Alela! | </title>
 
     <!-- Bootstrap -->
-    <link href="{{ asset('adminbackend/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('adminbackend/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet"> --}}
     <!-- Font Awesome -->
     <link href="{{ asset('adminbackend/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('bower_components/components-font-awesome/css/all.css') }}">
@@ -26,9 +28,16 @@
     <link href="{{ asset('adminbackend/vendors/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="{{ asset('adminbackend/build/css/custom.min.css') }}" rel="stylesheet">
-
-     <!-- Styles -->
-     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
-
-  </head>
+    {{-- <link href="{{ asset('adminbackend/build/css/custom.min.css') }}" rel="stylesheet"> --}}
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/imgs/favicon.svg') }}">
+    <!-- UltraNews CSS  -->
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/widgets.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/color.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <script src="{{ asset('bower_components/ckeditor/ckeditor.js') }}"></script>
+</head>
+<main class="py-4">
+    @yield('content')
+</main>

@@ -10,6 +10,7 @@
 /public.js
 /public/newsviral
 /public/assets
+/public/js
 /vendor
 .env
 .env.backup
